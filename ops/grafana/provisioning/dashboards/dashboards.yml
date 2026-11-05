@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: ticket-rush
+    folder: Ticket Rush
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

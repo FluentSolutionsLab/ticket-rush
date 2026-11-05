@@ -1,0 +1,23 @@
+name: Plan task
+description: One checklist item from a block spec
+labels: ["task"]
+body:
+  - type: input
+    id: week
+    attributes:
+      label: Week
+      placeholder: "Week 3"
+    validations:
+      required: true
+  - type: textarea
+    id: task
+    attributes:
+      label: Task
+      description: The checklist item, copied from the spec
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      description: The week's acceptance criteria that this task contributes to

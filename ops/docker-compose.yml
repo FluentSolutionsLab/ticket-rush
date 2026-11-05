@@ -1,0 +1,75 @@
+# Week 1 stack: API, Postgres, Prometheus, Grafana, postgres_exporter.
+# Later weeks add: nginx + a second API instance (week 3), Redis (week 2-3), a Postgres replica (week 4).
+# Resource limits are fixed on purpose so results from different weeks are comparable.
+name: ticket-rush
+
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: ticketrush
+      POSTGRES_USER: ticketrush
+      POSTGRES_PASSWORD: ticketrush
+    command:
+      - postgres
+      - -c
+      - shared_preload_libraries=pg_stat_statements
+      - -c
+      - pg_stat_statements.track=all
+      - -c
+      - log_lock_waits=on
+      - -c
+      - deadlock_timeout=200ms
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ticketrush -d ticketrush"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+    deploy:
+      resources:
+        limits: { cpus: "2", memory: 2g }
+
+  api:
+    build:
+      context: ..
+      dockerfile: src/TicketRush.Api/Dockerfile
+    environment:
+      ConnectionStrings__TicketRush: Host=postgres;Port=5432;Database=ticketrush;Username=ticketrush;Password=ticketrush
+      Database__ApplySchemaOnStartup: "true"
+      Booking__Strategy: ${BOOKING_STRATEGY:-Naive}
+    ports: ["8080:8080"]
+    depends_on:
+      postgres: { condition: service_healthy }
+    deploy:
+      resources:
+        limits: { cpus: "2", memory: 1g }
+
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:v0.16.0
+    environment:
+      DATA_SOURCE_NAME: postgresql://ticketrush:ticketrush@postgres:5432/ticketrush?sslmode=disable
+    depends_on:
+      postgres: { condition: service_healthy }
+
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports: ["9090:9090"]
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    ports: ["3000:3000"]
+    depends_on: [prometheus]
+
+volumes:
+  pgdata:
