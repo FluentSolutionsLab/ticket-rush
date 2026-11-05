@@ -17,6 +17,12 @@ No overselling. No double charges. Every claim backed by a measurement.
 
 Progress is tracked with one GitHub milestone per week, one issue per checklist item, and one
 pull request per week that includes that week's note in [`docs/weekly/`](docs/weekly/).
+Block 3 lab issues live in the private `distsys-labs` repository. Both repos feed one Projects board.
+
+| Script | What it does |
+| --- | --- |
+| [`scripts/github/bootstrap_plan.py`](scripts/github/bootstrap_plan.py) | Creates labels, weekly milestones and issues from the specs (idempotent) |
+| [`scripts/github/create_project_board.sh`](scripts/github/create_project_board.sh) | Creates the "Ticket Rush plan" board and adds every issue (run on your machine) |
 
 ## Evolution
 
