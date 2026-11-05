@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9329480D-5A17-4519-8BFD-A42E4B9B861E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketRush.Api", "src\TicketRush.Api\TicketRush.Api.csproj", "{80E1761B-CE74-4680-8C7E-AE095B78E9EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketRush.Data", "src\TicketRush.Data\TicketRush.Data.csproj", "{3353EDB3-F6F0-4CC3-9744-6C037D210561}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C99B7504-9A76-4AAB-B556-F5F5A46F2ECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketRush.Tests", "tests\TicketRush.Tests\TicketRush.Tests.csproj", "{310F7A4E-CA11-4FFE-9ED3-73A98008F2C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80E1761B-CE74-4680-8C7E-AE095B78E9EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E1761B-CE74-4680-8C7E-AE095B78E9EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E1761B-CE74-4680-8C7E-AE095B78E9EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E1761B-CE74-4680-8C7E-AE095B78E9EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3353EDB3-F6F0-4CC3-9744-6C037D210561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3353EDB3-F6F0-4CC3-9744-6C037D210561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3353EDB3-F6F0-4CC3-9744-6C037D210561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3353EDB3-F6F0-4CC3-9744-6C037D210561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{310F7A4E-CA11-4FFE-9ED3-73A98008F2C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{310F7A4E-CA11-4FFE-9ED3-73A98008F2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{310F7A4E-CA11-4FFE-9ED3-73A98008F2C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{310F7A4E-CA11-4FFE-9ED3-73A98008F2C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{80E1761B-CE74-4680-8C7E-AE095B78E9EE} = {9329480D-5A17-4519-8BFD-A42E4B9B861E}
+		{3353EDB3-F6F0-4CC3-9744-6C037D210561} = {9329480D-5A17-4519-8BFD-A42E4B9B861E}
+		{310F7A4E-CA11-4FFE-9ED3-73A98008F2C6} = {C99B7504-9A76-4AAB-B556-F5F5A46F2ECE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+bin/
+obj/
+*.user
+.vs/
+.idea/
+node_modules/
+.env
+*.tfstate
+*.tfstate.*
+.terraform/
+load/results/*.json
