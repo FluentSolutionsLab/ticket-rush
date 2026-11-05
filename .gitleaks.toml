@@ -1,0 +1,9 @@
+# Default gitleaks rules plus a narrow allowlist for documentation examples.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Example values in the specs (not secrets)"
+regexes = [
+  '''7f3c2a9e-1b4d-4c8e-9a10-2f6b5d7e8c01''',  # example Idempotency-Key in the Block 1 spec
+]
